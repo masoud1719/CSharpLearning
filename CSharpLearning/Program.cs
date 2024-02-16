@@ -8,8 +8,20 @@ namespace CSharpLearning
 {
     internal class Program
     {
+        /// <summary>
+        /// Document comment
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
+            // single line comment
+
+
+            /*
+             * multiline
+             * comment
+             */
+           
         }
     }
 }
