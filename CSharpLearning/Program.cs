@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.ConstrainedExecution;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -100,7 +103,139 @@ namespace CSharpLearning
             #endregion
             #endregion
 
+            #region C# Data Types
 
+            ////  Data Type   Size    Description
+            ////  int         4       bytes Stores whole numbers from - 2,147,483,648 to 2,147,483,647
+            ////  long        8       bytes Stores whole numbers from - 9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+            ////  float       4       bytes Stores fractional numbers. Sufficient for storing 6 to 7 decimal digits
+            ////  double      8       bytes Stores fractional numbers.Sufficient for storing 15 decimal digits
+            ////  bool        1       bit   Stores true or false values
+            ////  char        2       bytes Stores a single character / letter, surrounded by single quotes
+            ////  string      2       bytes per character   Stores a sequence of characters, surrounded by double quotes
+
+            //int myNum = 5;               // Integer (whole number)
+            //double myDoubleNum = 5.99D;  // Floating point number
+            //char myLetter = 'D';         // Character
+            //bool myBool = true;          // Boolean
+            //string myText = "Hello";     // String
+            //float f1 = 35e3F;
+            //double d1 = 12E4D;
+            //Console.WriteLine(f1);
+            //Console.WriteLine(d1);
+
+            ////Use float or double?
+            ////The precision of a floating point value indicates how many digits the value can have after the decimal point.
+            ////The precision of float is only six or seven decimal digits, while double variables have a precision of about 15 digits.
+            ////Therefore it is safer to use double for most calculations.
+            #endregion
+
+            #region C# Type Casting
+            /*
+            *Type casting is when you assign a value of one data type to another type.
+            *In C#, there are two types of casting:
+            *Implicit Casting (automatically) - converting a smaller type to a larger type size
+                *char -> int -> long -> float -> double
+            *Explicit Casting (manually) - converting a larger type to a smaller size type
+                *double -> float -> long -> int -> char
+            */
+
+            #region Implicit Casting
+            //int myInt = 9;
+            //double myDouble = myInt;       // Automatic casting: int to double
+
+            //Console.WriteLine(myInt);      // Outputs 9
+            //Console.WriteLine(myDouble);   // Outputs 9
+            #endregion
+
+            #region Explicit Casting
+            //double myDouble = 9.78;
+            //int myInt = (int)myDouble;    // Manual casting: double to int
+
+            //Console.WriteLine(myDouble);   // Outputs 9.78
+            //Console.WriteLine(myInt);      // Outputs 9
+            #endregion
+
+            #region Type Conversion Methods
+            //// It is also possible to convert data types explicitly by using built-in methods, such as Convert.
+            //// ToBoolean, Convert.ToDouble, Convert.ToString, Convert.ToInt32(int) and Convert.ToInt64(long):
+            //int myInt = 10;
+            //double myDouble = 5.25;
+            //bool myBool = true;
+
+            //Console.WriteLine(Convert.ToString(myInt));    // convert int to string
+            //Console.WriteLine(Convert.ToDouble(myInt));    // convert int to double
+            //Console.WriteLine(Convert.ToInt32(myDouble));  // convert double to int
+            //Console.WriteLine(Convert.ToString(myBool));   // convert bool to string
+            #endregion
+            #endregion
+
+            #region Get User Input
+            //// Type your username and press enter
+            //Console.WriteLine("Enter username:");
+
+            //// Create a string variable and get user input from the keyboard and store it in the variable
+            //string userName = Console.ReadLine();
+
+            //// Print the value of the variable (userName), which will display the input value
+            //Console.WriteLine("Username is: " + userName);
+
+            //// User input and type casting
+            //Console.WriteLine("Enter your age:");
+            //int age = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Your age is: " + age);
+            #endregion
+
+            #region Operators
+            /*
+            * Operator          Name                                        Description Example 
+            * +Addition         Adds together two values                    x + y
+            * - Subtraction     Subtracts one value from another            x -y
+            * * Multiplication  Multiplies two values                       x *y
+            * / Division        Divides one value by another                x / y
+            * % Modulus         Returns the division remainder              x % y
+            * ++  Increment     Increases the value of a variable by 1      x++
+            * --  Decrement     Decreases the value of a variable by 1      x--
+            */
+
+            //int sum1 = 100 + 50;        // 150 (100 + 50)
+            //int sum2 = sum1 + 250;      // 400 (150 + 250)
+            //int sum3 = sum2 + sum2;     // 800 (400 + 400)
+
+            /* A list of all comparison operators:
+                 Operator            Name                        Example 
+                 ==                  Equal to                    x == y
+                 !=                  Not equal                   x != y
+                 >                   Greater than                x > y
+                 <                   Less than                   x<y
+                 >=                  Greater than or equal to    x >= y
+                 <=                  Less than or equal to       x <= y
+            */
+            //int x = 5;
+            //int y = 3;
+            //Console.WriteLine(x > y); // returns True because 5 is greater than 3
+
+            /*Operator        Name Description                                                        Example 
+             *&&              Logical and Returns True if both statements are true                    x < 5 && x < 10
+             *||              Logical or Returns True if one of the statements is true                x < 5 || x < 4
+             *!               Logical not Reverse the result, returns False if the result is true     !(x < 5 && x < 10)
+             */
+            #endregion
+
+            #region Math
+            ////The C# Math class has many methods that allows you to perform mathematical tasks on numbers.
+            ////The Math.Max(x, y) method can be used to find the highest value of x and y:
+            //Console.WriteLine(Math.Max(5, 10));
+            ////The Math.Min(x,y) method can be used to find the lowest value of of x and y:
+            //Console.WriteLine(Math.Min(5, 10));
+            ////The Math.Sqrt(x) method returns the square root of x:
+            //Console.WriteLine(Math.Sqrt(64));
+            ////The Math.Abs(x) method returns the absolute (positive) value of x:
+            //Console.WriteLine(Math.Abs(-4.7));
+            ////Math.Round() rounds a number to the nearest whole number:
+            //Console.WriteLine(Math.Round(9.99));
+
+            #endregion
             Console.ReadKey();
         }
     }
