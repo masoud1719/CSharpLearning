@@ -1,11 +1,15 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Runtime.ConstrainedExecution;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CSharpLearning
 {
@@ -236,7 +240,220 @@ namespace CSharpLearning
             //Console.WriteLine(Math.Round(9.99));
 
             #endregion
+
+            #region Strings
+            //// A string variable contains a collection of characters surrounded by double quotes:
+            // string greeting = "Nice to meet you!";;
+
+            //// String Length
+            ////  length of a string can be found with the Length property
+            // string txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            //Console.WriteLine("The length of the txt string is: " + txt.Length);
+
+            //// ToUpper() and ToLower(), which returns a copy of the string converted to uppercase or lowercase.
+            //string txt = "Hello World";
+            //Console.WriteLine(txt.ToUpper());   // Outputs "HELLO WORLD"
+            //Console.WriteLine(txt.ToLower());   // Outputs "hello world"
+
+            //// String Trimming
+            //// These methods will removes white spaces from the start or end or both direction
+            //string txt = "            Hello World               ";
+            //Console.WriteLine(txt.Trim());   // Outputs "Hello World"
+            //Console.WriteLine(txt.TrimStart());   // Outputs "Hello World               "
+            //Console.WriteLine(txt.TrimEnd());   // Outputs "            Hello World"
+
+            #region String Concatenation
+            //// The + operator can be used between strings to combine them. This is called concatenation:
+            //string firstName = "John "; // Note that we have added a space after "John" to create a space between firstName and lastName on print.
+            //string lastName = "Doe";
+            //string name = firstName + lastName;
+            //Console.WriteLine(name);
+
+            //// You can also use the string.Concat() method to concatenate two strings:
+            //string firstName = "John";
+            //string lastName = "Doe";
+            //string name = string.Concat(firstName," ", lastName);
+            //Console.WriteLine(name);
+
+            //// Another option of string concatenation, is string interpolation, which substitutes values of variables into placeholders in a string.
+            //// Note that you do not have to worry about spaces, like with concatenation:
+            //string firstName = "John";
+            //string lastName = "Doe";
+            //string name = $"My full name is: {firstName} {lastName}";
+            //Console.WriteLine(name);
+            #endregion
+
+            #region  Special Characters
+            ////Because strings must be written within quotes, C# will misunderstand this string, and generate an error:
+            // string txt = "We are the so-called "Vikings" from the north.";
+
+
+            //// The solution to avoid this problem, is to use the backslash escape character.
+            ////The backslash(\) escape character turns special characters into string characters:
+            /*
+             *      Escape character	Result	        Description
+             *      \'	                '	            Single quote
+             *      \"	                "	            Double quote
+             *      \\	                \	            Backslash
+             */
+
+            //string txt1 = "We are the so-called \"Vikings\" from the north.";
+            //string txt2 = "It\'s alright.";
+            //string txt3 = "The character \\ is called backslash.";
+            //Console.WriteLine(txt1);
+            //Console.WriteLine(txt2);
+            //Console.WriteLine(txt3);
+
+            /* Other useful escape characters in C# are:
+             *  Code	    Result	
+             *  \n	        New Line	
+             *  \t	        Tab	
+             *  \b	        Backspace
+             */
+            //string txt1 = "line1\nline2";
+            //string txt2 = "line1\tline1 after tab";
+            //string txt3 = "line1\bline1 after back slash";
+            //Console.WriteLine(txt1);
+            //Console.WriteLine(txt2);
+            //Console.WriteLine(txt3);
+
+            #endregion
+
+            #endregion
+
+            #region  Conditions and If Statements and Switch
+            /*
+                * Less than: a < b
+                *Less than or equal to: a <= b
+                *Greater than: a > b
+                *Greater than or equal to: a >= b
+                *Equal to a == b
+                *Not Equal to: a != b
+            */
+
+            /*
+            * Use if to specify a block of code to be executed, if a specified condition is true
+            *Use else to specify a block of code to be executed, if the same condition is false
+            *Use else if to specify a new condition to test, if the first condition is false
+            *Use switch to specify many alternative blocks of code to be executed
+            */
+
+            ////if (condition)
+            ////{
+            ////    // block of code to be executed if the condition is True
+            ////}
+            //// --------------------------------------------------------------------
+            //if (20 > 18)
+            //{
+            //    Console.WriteLine("20 is greater than 18");
+            //}
+            //// --------------------------------------------------------------------
+            ////if (condition)
+            ////{
+            ////    // block of code to be executed if the condition is True
+            ////}
+            ////else
+            ////{
+            ////    // block of code to be executed if the condition is False
+            ////}
+            //// --------------------------------------------------------------------
+            //int time = 20;
+            //if (time < 18)
+            //{
+            //    Console.WriteLine("Good day.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Good evening.");
+            //}
+            //// --------------------------------------------------------------------
+            ////if (condition1)
+            ////{
+            ////    // block of code to be executed if condition1 is True
+            ////}
+            ////else if (condition2)
+            ////{
+            ////    // block of code to be executed if the condition1 is false and condition2 is True
+            ////}
+            ////else
+            ////{
+            ////    // block of code to be executed if the condition1 is false and condition2 is False
+            ////}
+            //// --------------------------------------------------------------------
+            //int time = 22;
+            //if (time < 10)
+            //{
+            //    Console.WriteLine("Good morning.");
+            //}
+            //else if (time < 20)
+            //{
+            //    Console.WriteLine("Good day.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Good evening.");
+            //}
+            //// Outputs "Good evening."
+            //// --------------------------------------------------------------------
+            //// variable = (condition) ? expressionTrue :  expressionFalse;
+            //int time = 20;
+            //if (time < 18)
+            //{
+            //    Console.WriteLine("Good day.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Good evening.");
+            //}
+            //int time = 20;
+            //string result = (time < 18) ? "Good day." : "Good evening.";
+            //Console.WriteLine(result);
+            //// --------------------------------------------------------------------
+            ////switch (expression)
+            ////{
+            ////    case x:
+            ////        // code block
+            ////        break;
+            ////    case y:
+            ////        // code block
+            ////        break;
+            ////    default:
+            ////        // code block
+            ////        break;
+            ////}
+            ////The switch expression is evaluated once
+            ////The value of the expression is compared with the values of each case
+            ////If there is a match, the associated block of code is executed
+            ////The break and default keywords will be described later in this chapter
+            //int day = 4;
+            //switch (day)
+            //{
+            //    case 1:
+            //        Console.WriteLine("Monday");
+            //        break;
+            //    case 2:
+            //        Console.WriteLine("Tuesday");
+            //        break;
+            //    case 3:
+            //        Console.WriteLine("Wednesday");
+            //        break;
+            //    case 4:
+            //        Console.WriteLine("Thursday");
+            //        break;
+            //    case 5:
+            //        Console.WriteLine("Friday");
+            //        break;
+            //    case 6:
+            //        Console.WriteLine("Saturday");
+            //        break;
+            //    case 7:
+            //        Console.WriteLine("Sunday");
+            //        break;
+            //}
+            //// Outputs "Thursday" (day 4)
+            #endregion
+
             Console.ReadKey();
-        }
-    }
+}
+}
 }
