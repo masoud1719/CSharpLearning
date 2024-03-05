@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -453,7 +454,218 @@ namespace CSharpLearning
             //// Outputs "Thursday" (day 4)
             #endregion
 
+            #region Loops
+            #region C# While Loop
+            //// Loops can execute a block of code as long as a specified condition is reached.
+            //// The while loop loops through a block of code as long as a specified condition is True:
+            ////while (condition) 
+            ////{
+            /////   code block to be executed
+            //// }
+            //// Example :
+            //int i = 0;
+            //while (i < 5)
+            //{
+            //    Console.WriteLine(i);
+            //    i++;
+            //}
+            //// The do/while loop is a variant of the while loop. This loop will execute the code block once,
+            //// before checking if the condition is true, then it will repeat the loop as long as the condition is true.
+            //// do 
+            ////{
+            //// code block to be executed
+            ////}
+            ////while (condition) ;
+            //// Example:
+            //int i = 0;
+            //do
+            //{
+            //    Console.WriteLine(i);
+            //    i++;
+            //}
+            //while (i < 5);
+
+            #endregion
+
+            #region for Loop
+            /*When you know exactly how many 
+             * times you want to loop through a block of code, 
+             * use the for loop instead of a while loop:
+             */
+            //// for (statement 1; statement 2; statement 3) 
+            ////{
+            //// // code block to be executed
+            //// }
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    Console.WriteLine(i);
+            //}
+            /*Example explained
+             * Statement 1 sets a variable before the loop starts (int i = 0).
+             * Statement 2 defines the condition for the loop to run (i must be less than 5). If the condition is true, the loop will start over again, if it is false, the loop will end.
+             * Statement 3 increases a value (i++) each time the code block in the loop has been executed.
+             */
+            #region Nested Loops
+            /*It is also possible to place a loop inside another loop. This is called a nested loop.
+             * The "inner loop" will be executed one time for each iteration of the "outer loop":
+             */
+            //// Outer loop
+            //for (int i = 1; i <= 2; ++i)
+            //{
+            //    Console.WriteLine("Outer: " + i);  // Executes 2 times
+
+            //    // Inner loop
+            //    for (int j = 1; j <= 3; j++)
+            //    {
+            //        Console.WriteLine(" Inner: " + j); // Executes 6 times (2 * 3)
+            //    }
+            //}
+            #endregion
+
+            #endregion
+
+            #region C# Break and Continue
+            /* You have already seen the break statement used in an earlier chapter of this tutorial. It was used to "jump out" of a switch statement.
+              * The break statement can also be used to jump out of a loop.
+              * This example jumps out of the loop when i is equal to 4:
+              */
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    if (i == 4)
+            //    {
+            //        break;
+            //    }
+            //    Console.WriteLine(i);
+            //}
+            /*The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop.
+             * This example skips the value of 4:
+             */
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    if (i == 4)
+            //    {
+            //        continue;
+            //    }
+            //    Console.WriteLine(i);
+            //}
+            //// You can also use break and continue in while loops:
+            //int i = 0;
+            //while (i < 10)
+            //{
+            //    Console.WriteLine(i);
+            //    i++;
+            //    if (i == 4)
+            //    {
+            //        break;
+            //    }
+            //}
+            //int i = 0;
+            //while (i < 10)
+            //{
+            //    if (i == 4)
+            //    {
+            //        i++;
+            //        continue;
+            //    }
+            //    Console.WriteLine(i);
+            //    i++;
+            //}
+
+            #endregion
+
+            #region Class Examples
+            //for (int i =0; i < 10; i ++)
+            //{
+            //    if(i == 5)
+            //    {
+            //        continue;
+            //    }
+            //    else if (i == 6)
+            //    {
+            //        break;
+            //    }
+            //    Console.WriteLine(i);
+            //}
+            //int n = 15;
+            //do
+            //{
+            //    if (n == 5)
+            //    {
+            //        n += 1;
+            //        continue;
+            //    }
+            //    else if (n == 6)
+            //    {
+            //        break;
+            //    }
+            //    Console.WriteLine(n);
+            //    n += 1;
+            //} while (n < 10);
+
+            //Random r = new Random();
+            //int rInt = r.Next(1, 10);
+
+            //while (true)
+            //{
+            //    string userInputString = Console.ReadLine();
+            //    int userInput = int.Parse(userInputString);
+            //    if (userInput < rInt)
+            //    {
+            //        Console.WriteLine("Please select a bigger one");
+            //    }
+            //    else if (userInput > rInt)
+            //    {
+            //        Console.WriteLine("please select a smaller one");
+            //    }
+            //    else if (userInput == rInt)
+            //    {
+            //        Console.WriteLine("you won");
+            //        break;
+            //    }
+            //}
+
+            //DateTime d = new DateTime(2014,01,01);
+            //DateTime d2 = d.AddDays(10);
+            //TimeSpan d3 =d - d2;
+            //Console.WriteLine(d);
+
+            //double sum = 0;
+            ////for (double i = 1; i < 101; i++)
+            ////{
+            ////    sum += i;
+            ////}
+            //int num = int.Parse(Console.ReadLine());
+            //sum = ((num +1) * num) / 2;
+            //Console.WriteLine(sum);
+            //// O(n^2)
+
+            //for (int i = 0; i < 10000; i++) 
+            //{ 
+            //    for(int j = 0; j < 10000; j++)
+            //    {
+            //        Console.WriteLine($"i={i}* j={j}");
+            //    }
+            //}
+
+            //for (int i = 1; i <= 5; i++)
+            //{
+            //    string star = string.Empty;
+            //    for (int j = 1; j <= i; j++)
+            //    {
+            //        star = star + "*";
+            //    }
+            //    Console.WriteLine(star);
+            //}
+
+            // * * * * *
+            // * * * *
+            // * * *
+            // * * 
+            // *
+            #endregion
+            #endregion
+
             Console.ReadKey();
-}
-}
+        }
+    }
 }
