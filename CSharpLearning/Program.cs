@@ -665,7 +665,141 @@ namespace CSharpLearning
             #endregion
             #endregion
 
+            #region Method
+            /* A method is a block of code which only runs when it is called.
+            *  You can pass data, known as parameters, into a method.
+            *  Methods are used to perform certain actions, and they are also known as functions.
+            *  Why use methods? To reuse code: define the code once, and use it many times.
+            */
+            ////Create a method inside the Program class:
+            //    class Program
+            //{
+            //    static void MyMethod()
+            //    {
+            //        // code to be executed
+            //    }
+            //}
+            //// MyMethod() is the name of the method
+            //// void means that this method does not have a return value. You will learn more about return values later in this chapter
+            //// Note: In C#, it is good practice to start with an uppercase letter when naming methods, as it makes the code easier to read.
+            ////How to call a Method
+            //int myRes = MySum(10, 20);
+
+            //Console.WriteLine(myRes+50);
+            //int  res = Math.Max(10, 20);
+
+            //int res = MyMax(10, 20);
+            //Console.WriteLine(res);
+
+            //double avg = MyMethod(10, 20, 30);
+            //Console.WriteLine(avg);
+
+            //int[] arr = { 10, 20, 30, 200, 500, 700 };
+            //double res = MyMethodArr(arr);
+            //Console.WriteLine(res);
+
+            //// Default Parameter
+            //int res = MySum(10);
+            //int res2 = MySum(10, 20);
+
+            //// Method overloading
+            //int res = MyMax(10,20);
+            //double res2 = MyMax(30.5, 40.2);
+            #endregion
             Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Method to get two int number and return the sum of them.
+        /// </summary>
+        /// <param name="num1"> The first number</param>
+        /// <param name="num2"> The second number</param>
+        /// <returns> sum of the two input numbers</returns>
+        static int MySum(int num1, int num2)
+        {
+            int num3 = num1 + num2;
+            return num3;
+        }
+
+        /// <summary>
+        /// Method to find max number between two input number.
+        /// </summary>
+        /// <param name="num1">The first number</param>
+        /// <param name="num2">The second number</param>
+        /// <returns>Max of two input numbers</returns>
+        static int MyMax(int num1, int num2)
+        {
+            if (num1 > num2) { return num1; }
+            else { return num2; }
+        }
+        /// <summary>
+        /// Method to find max number between two input number of type double
+        /// </summary>
+        /// <param name="num1">The first number</param>
+        /// <param name="num2">The second number</param>
+        /// <returns>Max of two input numbers of type double</returns>
+        static doubel MyMax(double num1, doubel num2)
+        {
+            if (num1 > num2) { return num1; }
+            else { return num2; }
+        }
+        /// <summary>
+        /// Find the avg of three number
+        /// </summary>
+        /// <param name="num1">The first number</param>
+        /// <param name="num2">The second number</param>
+        /// <param name="num3">The third number</param>
+        /// <returns>average og these three number</returns>
+        static double MyMethod(int num1, int num2, int num3)
+        {
+            double sum = num1 + num2 + num3;
+            return sum / 3;
+        }
+
+        /// <summary>
+        /// Find average of an existing array
+        /// </summary>
+        /// <param name="arr">Input array</param>
+        /// <returns>Avage of the input values in the array.</returns>
+        static double MyMethodArr(int[] arr)
+        {
+            double sum = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                sum += arr[i];
+            }
+
+            return sum / arr.Length;
+
+        }
+
+        /// <summary>
+        /// Method to find Min value of an existing array.
+        /// </summary>
+        /// <param name="arr">Input array</param>
+        /// <returns>min value of the array</returns>
+        static double MyMin(int[] arr)
+        {
+            double min = arr[0];
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i] < min)
+                {
+                    min = arr[i];
+                }
+            }
+            return min;
+        }
+
+        /// <summary>
+        /// Method with default parameter
+        /// </summary>
+        /// <param name="num1">num1</param>
+        /// <param name="num2">num2</param>
+        /// <returns>In case we haven't use num2 the first number will be return otherwise sum of the first and second number will be return.</returns>
+        static int MySum(int num1, int num2 = 0)
+        {
+            return num1 + num2;
         }
     }
 }
