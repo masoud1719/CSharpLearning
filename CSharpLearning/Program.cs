@@ -706,6 +706,29 @@ namespace CSharpLearning
             //int res = MyMax(10,20);
             //double res2 = MyMax(30.5, 40.2);
             #endregion
+
+            #region Class
+            //// Create an object of Person class and define the public fields
+            //Person teacher = new Person();
+            //teacher.age = 20;
+            //teacher.name = "test";
+            //teacher.height = 171;
+
+            //// Create another object of person class
+            //Person worker = new Person();
+            //Console.WriteLine(teacher.age);
+            //// Create an object of calculator class with default constructor
+            //Calculator sonyCalculator = new Calculator();
+            //sonyCalculator.brand = "Sony";
+            //sonyCalculator.price = 500;
+            //// Call the public method
+            //int res = sonyCalculator.CalcSum(10, 20);
+            //Console.WriteLine(res);
+            //// Create an object of calculator class with our defined constructor
+            //Person person2 = new Person(20, "test2", 171);
+            //Console.WriteLine(person2._height);
+
+            #endregion
             Console.ReadKey();
         }
 
