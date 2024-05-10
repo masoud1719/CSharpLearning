@@ -717,6 +717,8 @@ namespace CSharpLearning
             //// Create another object of person class
             //Person worker = new Person();
             //Console.WriteLine(teacher.age);
+
+            /// class Members
             //// Create an object of calculator class with default constructor
             //Calculator sonyCalculator = new Calculator();
             //sonyCalculator.brand = "Sony";
@@ -724,12 +726,216 @@ namespace CSharpLearning
             //// Call the public method
             //int res = sonyCalculator.CalcSum(10, 20);
             //Console.WriteLine(res);
+
+
+            /// Constructor
             //// Create an object of calculator class with our defined constructor
             //Person person2 = new Person(20, "test2", 171);
             //Console.WriteLine(person2._height);
+            #region Access Modifiers
+            /*
+             * public	    The code is accessible for all classes
+             * private	    The code is only accessible within the same class
+             * protected	The code is accessible within the same class, or in a class that is inherited from that class. You will learn more about inheritance in a later chapter
+             * internal	    The code is only accessible within its own assembly, but not from another assembly. You will learn more about this in a later chapter
+             */
+            ////Why Access Modifiers?
+            ////To control the visibility of class members(the security level of each individual class and class member).
+            ////To achieve "Encapsulation" - which is the process of making sure that "sensitive" data is hidden from users.This is done by declaring fields as private. You will learn more about this in the next chapter.
+            ////Note: By default, all members of a class are private if you don't specify an access modifier:
+            ///If you declare a field with a private access modifier, it can only be accessed within the same class:
+            //    class Car
+            //{
+            //    private string model = "Mustang";
+
+            //    static void Main(string[] args)
+            //    {
+            //        Car myObj = new Car();
+            //        Console.WriteLine(myObj.model);
+            //    }
+            //}
+            #endregion
+
+            #region Encapsulation
+            //The meaning of Encapsulation, is to make sure that "sensitive" data is hidden from users.To achieve this, you must:
+            //declare fields/ variables as private
+            //provide public get and set methods, through properties, to access and update the value of a private field
+            #endregion
+
+            #region Properties
+            /*
+             * You learned from the previous chapter that private variables can only be accessed within the same class (an outside class has no access to it). However, sometimes we need to access them - and it can be done with properties.
+             * A property is like a combination of a variable and a method, and it has two methods: a get and a set method:
+             */
+            //    class Person
+            //{
+            //    private string name; // field
+
+            //    public string Name   // property
+            //    {
+            //        get { return name; }   // get method
+            //        set { name = value; }  // set method
+            //    }
+            //}
+            #region Automatic Properties (Short Hand)
+            /*
+             * C# also provides a way to use short-hand / automatic properties, where you do not have to define the field for the property, and you only have to write get; and set; inside the property.
+             * The following example will produce the same result as the example above. The only difference is that there is less code:
+             */
+            //    class Person
+            //{
+            //    public string Name  // property
+            //    { get; set; }
+            //}
+
+            //class Program
+            //{
+            //    static void Main(string[] args)
+            //    {
+            //        Person myObj = new Person();
+            //        myObj.Name = "Liam";
+            //        Console.WriteLine(myObj.Name);
+            //    }
+            //}
 
             #endregion
-            Console.ReadKey();
+
+            /* Why Encapsulation?
+             * Better control of class members (reduce the possibility of yourself (or others) to mess up the code)
+             * Fields can be made read-only (if you only use the get method), or write-only (if you only use the set method)
+             * Flexible: the programmer can change one part of the code without affecting other parts
+             * Increased security of data
+             */
+            #endregion
+            #region Inheritance (Derived and Base Class)
+            /*
+             * In C#, it is possible to inherit fields and methods from one class to another. We group the "inheritance concept" into two categories:
+             * Derived Class (child) - the class that inherits from another class
+             * Base Class (parent) - the class being inherited from
+             * To inherit from a class, use the : symbol.
+             * In the example below, the Car class (child) inherits the fields and methods from the Vehicle class (parent):
+             */
+            //    class Vehicle  // base class (parent) 
+            //{
+            //    public string brand = "Ford";  // Vehicle field
+            //    public void honk()             // Vehicle method 
+            //    {
+            //        Console.WriteLine("Tuut, tuut!");
+            //    }
+            //}
+
+            //class Car : Vehicle  // derived class (child)
+            //{
+            //    public string modelName = "Mustang";  // Car field
+            //}
+
+            //class Program
+            //{
+            //    static void Main(string[] args)
+            //    {
+            //        // Create a myCar object
+            //        Car myCar = new Car();
+
+            //        // Call the honk() method (From the Vehicle class) on the myCar object
+            //        myCar.honk();
+
+            //        // Display the value of the brand field (from the Vehicle class) and the value of the modelName from the Car class
+            //        Console.WriteLine(myCar.brand + " " + myCar.modelName);
+            //    }
+            //}
+            #region  The sealed Keyword
+            //// if you don't want other classes to inherit from a class, use the sealed keyword:
+            //       sealed class Vehicle
+            //      {
+            //...
+            //      }
+            #endregion
+            #region Polymorphism and Overriding Methods
+            /*Polymorphism means "many forms", and it occurs when we have many classes that are related to each other by inheritance.
+             * Like we specified in the previous chapter; Inheritance lets us inherit fields and methods from another class. Polymorphism uses those methods to perform different tasks. This allows us to perform a single action in different ways.
+             * For example, think of a base class called Animal that has a method called animalSound(). Derived classes of Animals could be Pigs, Cats, Dogs, Birds - And they also have their own implementation of an animal sound (the pig oinks, and the cat meows, etc.):
+             */
+            //// Example 1 without virtual 
+            //    class Animal  // Base class (parent) 
+            //{
+            //    public void animalSound()
+            //    {
+            //        Console.WriteLine("The animal makes a sound");
+            //    }
+            //}
+
+            //class Pig : Animal  // Derived class (child) 
+            //{
+            //    public void animalSound()
+            //    {
+            //        Console.WriteLine("The pig says: wee wee");
+            //    }
+            //}
+
+            //class Dog : Animal  // Derived class (child) 
+            //{
+            //    public void animalSound()
+            //    {
+            //        Console.WriteLine("The dog says: bow wow");
+            //    }
+            //}
+
+            //class Program
+            //{
+            //    static void Main(string[] args)
+            //    {
+            //        Animal myAnimal = new Animal();  // Create a Animal object
+            //        Animal myPig = new Pig();  // Create a Pig object
+            //        Animal myDog = new Dog();  // Create a Dog object
+
+            //        myAnimal.animalSound();
+            //        myPig.animalSound();
+            //        myDog.animalSound();
+            //    }
+            //}
+
+            //// Example 2 with virtual
+                //    class Animal  // Base class (parent) 
+                //{
+                //    public virtual void animalSound()
+                //    {
+                //        Console.WriteLine("The animal makes a sound");
+                //    }
+                //}
+
+                //class Pig : Animal  // Derived class (child) 
+                //{
+                //    public override void animalSound()
+                //    {
+                //        Console.WriteLine("The pig says: wee wee");
+                //    }
+                //}
+
+                //class Dog : Animal  // Derived class (child) 
+                //{
+                //    public override void animalSound()
+                //    {
+                //        Console.WriteLine("The dog says: bow wow");
+                //    }
+                //}
+
+                //class Program
+                //{
+                //    static void Main(string[] args)
+                //    {
+                //        Animal myAnimal = new Animal();  // Create a Animal object
+                //        Animal myPig = new Pig();  // Create a Pig object
+                //        Animal myDog = new Dog();  // Create a Dog object
+
+                //        myAnimal.animalSound();
+                //        myPig.animalSound();
+                //        myDog.animalSound();
+                //    }
+                //}
+        #endregion
+        #endregion
+        #endregion
+        Console.ReadKey();
         }
 
         /// <summary>
@@ -761,11 +967,11 @@ namespace CSharpLearning
         /// <param name="num1">The first number</param>
         /// <param name="num2">The second number</param>
         /// <returns>Max of two input numbers of type double</returns>
-        static doubel MyMax(double num1, doubel num2)
-        {
-            if (num1 > num2) { return num1; }
-            else { return num2; }
-        }
+        //static doubel MyMax(double num1, doubel num2)
+        //{
+        //    if (num1 > num2) { return num1; }
+        //    else { return num2; }
+        //}
         /// <summary>
         /// Find the avg of three number
         /// </summary>
@@ -820,9 +1026,9 @@ namespace CSharpLearning
         /// <param name="num1">num1</param>
         /// <param name="num2">num2</param>
         /// <returns>In case we haven't use num2 the first number will be return otherwise sum of the first and second number will be return.</returns>
-        static int MySum(int num1, int num2 = 0)
-        {
-            return num1 + num2;
-        }
+        //static int MySum(int num1, int num2 = 0)
+        //{
+        //    return num1 + num2;
+        //}
     }
 }
